@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | SignUp</title>
+    <link rel="stylesheet" href="../../public/styles/tickets.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .header{
+            position: fixed;
+            top: 0;
+            height: 10vh;
+            width: 100%;
+            background-color: #1a163d;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        .inner-div-header{
+            width: 95%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        .left{
+            display: flex;
+            align-items: center;
+        }
+        .left a{
+            border-radius: 5px;
+            margin: 4px;
+            text-decoration: none;
+            color: white;
+            padding: 8px;
+            background-color: #642b59;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .right{
+            display: flex;
+            align-items: center;
+        }
+        .right div{
+            margin-right:6px;
+        }
+        .notification-btn{
+            height: 33px;
+            width: 33px;
+            background-color: #fcb359;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-btn{
+            height: 33px;
+            width: 33px;
+            background-color: #fcb359;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-div{
+            width: fit-content;
+            padding: 0 8px 0 0;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            background-color: #642b59;
+        }
+       /* complaint div */
+
+    .complaint-div{
+    margin-top: 10vh;
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    }
+    .complaint-form{
+        height: 350px;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        justify-content: space-evenly;
+        box-shadow: 1px 1px 5px black;
+    }
+    input{
+        padding: 8px;
+    }
+    textarea{
+        height: 80px;
+    }
+    
+    /* Ticket divs */
+
+    
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="inner-div-header">
+            <div class="left">
+                <a href="">Home</a>
+                <a href="">My Complaints</a>
+            </div>
+            <div class="right">
+                <div class="notification-btn" id="notification-btn">
+                    
+                    <img src="/public/icons/noti-icon-notactive-white.png" alt="profile" height="25px" width="24px">
+                </div>
+                <div class="profile-div">
+                    <div class="profile-btn" id="profile-btn">
+                        <img src="/public/icons/profile-icon.png" alt="notification" height="25px" width="24px">
+                    </div>
+                    <h4 class="" id="username">Malkeet</h4>
+                </div>
+                <div>
+                    <button style="background-color:#642b59; color: white; border: none; padding: 8px; border-radius: 5px; font-size: 13px; font-weight: bold;">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Single with actions tickets -->
+    <div class="ticket-div" id="ticket-div">
+        
+    </div>
+</body>
+<script src="../../public/scripts/users/usertickets.js"></script>
+<script>
+userTicket(document.getElementById("ticket-div"),{title:"Title",startTime:"23456789",category:"Refund",status:"opened"})
+userTicket(document.getElementById("ticket-div"),{title:"Title",startTime:"23456789",category:"Refund",status:"opened"})
+userTicket(document.getElementById("ticket-div"),{title:"Title",startTime:"23456789",category:"Refund",status:"opened"})
+userTicket(document.getElementById("ticket-div"),{title:"Title",startTime:"23456789",category:"Refund",status:"opened"})
+userTicket(document.getElementById("ticket-div"),{title:"Title",startTime:"23456789",category:"Refund",status:"opened"})
+userTicket(document.getElementById("ticket-div"),{title:"Title",startTime:"23456789",category:"Refund",status:"opened"})
+userTicket(document.getElementById("ticket-div"),{title:"Title",startTime:"23456789",category:"Refund",status:"opened"})
+userTicket(document.getElementById("ticket-div"),{title:"Title",startTime:"23456789",category:"Refund",status:"opened"})
+userTicket(document.getElementById("ticket-div"),{title:"Title",startTime:"23456789",category:"Refund",status:"opened"})
+userTicket(document.getElementById("ticket-div"),{title:"Title",startTime:"23456789",category:"Refund",status:"opened"})
+userTicket(document.getElementById("ticket-div"),{title:"Title",startTime:"23456789",category:"Refund",status:"opened"})
+userTicket(document.getElementById("ticket-div"),{title:"Title",startTime:"23456789",category:"Refund",status:"opened"})
+</script>
+</html>

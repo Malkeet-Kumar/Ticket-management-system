@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/styles/dashboardHeader.css">
+    <style>
+        .content-div{
+            margin-top: 10vh;
+            height: 90vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-form{
+            height: 200px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            padding: 10px 20px;
+            background-color: white;
+            box-shadow: 1px 1px 4px #642b59;
+        }
+        input{
+            padding: 8px;
+            color: black;
+        }
+        input:focus{
+            outline: none;
+        }
+        #loginBtn{
+            padding: 8px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            background-color: #642b59;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="inner-div-header">
+            <div class="left">
+                <span id="home">Home</span>
+                <span id="about">About Us</span>
+                <span id="contact">Contact Us</span>  
+            </div>
+        </div>
+    </div>
+    <div class="content-div">
+        <form class="login-form" id="loginForm" action="/admin/login" method="post">
+            <h3 style="text-align: center;">Login</h3>
+            <input type="text" name="username" placeholder="Username" id="username">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <% if (err) { %>
+                <p style="color: red; font-weight: bold;"> <%= err %></p>
+            <% } %>
+            <input type="submit" id="loginBtn" value="Login" >
+        </form >
+    </div>
+</body>
+<script>
+document.getElementById("loginForm").addEventListener('submit', function (event) {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var errorMessage = "";
+    if (username.trim() === "") {
+        errorMessage += "Username is required.\n";
+    }
+    if (password.trim() === "") {
+        errorMessage += "Password is required.\n";
+    }
+    if (errorMessage !== "") {
+        alert(errorMessage);
+        event.preventDefault();
+    }
+});
+
+</script>
+</html>

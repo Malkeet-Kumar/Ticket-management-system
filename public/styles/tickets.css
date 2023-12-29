@@ -1,0 +1,25 @@
+.tickets-div{
+    margin-top: 11vh;
+    height: 90vh;
+    width: 100%;
+    display: none;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(4,1fr);
+}
+
+.ticket{
+    height: auto;
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 2px 4px 5px rgb(132, 140, 148);
+}
+.ticket p{
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 2px 4px;
+    padding: 2px;
+}

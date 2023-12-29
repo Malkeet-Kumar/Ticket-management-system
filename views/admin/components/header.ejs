@@ -1,0 +1,114 @@
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .header{
+        width: 100%;
+        height: 10vh;
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    .navbuttons{
+        margin-left: 30px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+    .navbuttons a, span{
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        margin: 5px;
+        padding: 10px;
+    }
+    .navbuttons a:hover, span:hover{
+        background-color: rgb(48, 44, 44);
+    }
+    .usercontrol{
+        width: 10%;
+        margin-right: 30px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    #logout{
+        border: none;
+        color: white;
+        background-color: darkolivegreen;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+</style>
+<div class="header">
+    <% if (role=="customer") { %>
+        <div class="navbuttons">
+            <a href="/home">Home</a>
+            <a href="#">Account</a>
+            <a href="#">Contact Us</a>
+            <span id="user-tickets">My Complaints</span>
+            <a href="/dashboard/complaint">Complaint</a>
+        </div>
+        <div class="usercontrol">
+            <% if (username){ %>
+                    <h3 style="color: white;" class="<%= role %>" id="user"><%= username %></h3>
+            <% } %>
+            <button id="logout"><a href="/logout" style="color: white; text-decoration: none;">Logout</a></button>
+        </div>
+    <% } else if(role=="resolver") { %>
+        <div class="navbuttons">
+            <a href="/dashboard">Home</a>
+            <a href="#">Account</a>
+            <span id="opened-tickets">Opened Tickets</span>
+            <span id="closed-tickets">Closed Tickets</span>
+            <span id="cancelled-tickets">Cancelled Tickets</span>
+            <a href="/dashboard/complaint">Complaint</a> 
+        </div>
+        <div class="usercontrol">
+            <% if (username){ %>
+                    <h3 style="color: white;" class="<%= role %>" id="user"><%= username %></h3>
+            <% } %>
+            <button id="logout"><a href="/logout" style="color: white; text-decoration: none;">Logout</a></button>
+        </div>
+    <% } else if(role=="admin") { %>
+        <div class="navbuttons">
+            <a href="">Home</a>
+            <a href="">Users</a>
+            <a href="">Tickets</a>
+            <label for="" style="color: white; margin: 5px;">Filter: </label>
+            <select name="filter" id="filter" style="width: 90px;">
+                <option value="all">All Tickets</option>
+                <option value="resolver">Resolver's</option>
+                <option value="ordinary">Customer's</option>
+                <option value="waiting">Waiting</option>
+                <option value="opened">Opened</option>
+                <option value="closed">Closed</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
+            <label for="" style="margin: 5px 5px 5px 10px; color: white;">Sort By :</label>
+            <select name="filter" id="filter" style="width: 90px;">
+                <option value="none">None</option>
+                <option value="time">Time</option>
+                <option value="title">Title</option>
+                
+            </select>
+        </div>
+        <div class="usercontrol">
+            <% if (username){ %>
+                    <h3 style="color: white;" class="<%= role %>" id="user"><%= username %></h3>
+            <% } %>
+            <button id="logout"><a href="/logout" style="color: white; text-decoration: none;">Logout</a></button>
+        </div>
+    <% } else { %>
+        <div class="navbuttons">
+            <a href="#">Home</a>
+            <a href="#">Contact Us</a>
+            <a href="">About Us</a>
+            <!-- <a href="">Open Tickets</a> -->
+        </div>
+    <% } %>
+</div>

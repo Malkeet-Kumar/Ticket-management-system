@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/styles/complaint.css">
+    <link rel="stylesheet" href="/styles/dashboardHeader.css">
+    <link rel="stylesheet" href="/styles/notificationWindow.css">
+    <link rel="stylesheet" href="/styles/tickets.css">
+    <style>
+        .complaint-div{
+            display: none;
+        }
+        .notickets{
+            margin-top: 10vh;
+            height: 90vh;
+            width: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ticket-chat{
+            margin-top: 10vh;
+            height: 90vh;
+            width: 100%;
+            display: none;
+            flex-direction: column;
+        }
+        .ticket-details{
+            height: 10%;
+            width: 100%;
+            display: flex;
+            background-color: #e0755d;
+            color: white;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .chatbox{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            /* margin-bottom: 7vh; */
+        }
+        .msg-item{
+            color: white;
+            margin: 5px 10px;
+            padding: 8px;
+            width: fit-content;
+            max-width: 55%;
+            word-wrap: break-word;
+            border-radius: 10px;
+        }
+        .chat-bottom-bar{
+            height: 8vh;
+            width: 100%;
+            background-color: #1a163d;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        #message{
+            margin-left: 5px;
+            padding: 10px;
+            width: 90%;
+            border: none;
+        }
+        #message:focus{
+            outline: none;
+        }
+        #send{
+            border: none;
+            margin-left: -5px;
+            margin-right: 5px;
+            padding: 10px;
+            width: 10%;
+            background-color: #642b59;
+            color: white;
+            font-weight: bold;
+        }
+        #closeChat{
+            height: 7vh;
+            width: 7vh;
+            position: fixed;
+            right: 0;
+            border-radius: 0;
+            font-size: 17px;
+            font-weight: bold;
+        }
+        #openedTickets-div{
+            display: grid;
+        }
+
+        /* dasdadasda */
+        .resolver-ticket{
+            padding: 10px;
+            background-color: #e0755d;
+            margin: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        .resolver-ticket p{
+            font-weight: bold;
+            color: white;
+        }
+        #status{
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <%- include('components/header.ejs') %>
+    <!-- Notification window -->
+    <div class="notification-window" id="notification-window">
+        <div style="box-shadow: 1px 0px 3px black; display: flex; justify-content: space-between; background-color: #642b59; color: white;">
+            <p style="margin-left: 10px;">Notifications</p>
+            <button style="height: 20px; width: 20px; background-color: white; color: black;" id="close-notification-btn">X</button>
+        </div>
+        <ul class="notification-list" id="notification-list"></ul>
+    </div>
+
+    <!-- complaint div -->
+    <div class="complaint-div" id="complaint-div">
+        <div class="">
+            <form class="complaint-form" id="complaint-form">
+                <h3 style="text-align: center;">Register a Complaint</h3>
+                <label for="">Category</label>
+                <select name="category" id="category">
+                    <option value="">Admin</option>
+                </select>
+                <label for="">Title</label>
+                <input type="text" name="complaintTitle" id="complaintTitle" placeholder="Complaint title">
+                <label for="">Description</label>
+                <textarea name="complaintMsg" id="complaintMsg" cols="30" rows="10" placeholder="Complaint Description"></textarea>
+                <input type="submit" id="" value="Raise Complaint">
+            </form>
+        </div>
+    </div>
+
+    <!-- Tickets -->
+    <div class="tickets-div" id="newTickets-div"></div>
+    <div class="tickets-div" id="openedTickets-div"></div>
+    <div class="tickets-div" id="closedTickets-div"></div>
+    <div class="tickets-div" id="myTickets-div"></div>
+    <!-- Chat box -->
+    <div id="ticket-chat" class="ticket-chat">
+        <div class="ticket-details">
+            <h4>Title</h4>
+            <h4>StartTime</h4>
+            <h4>TicketNo</h4>
+            <h4>Status</h4>
+            <button id="closeChat">X</button>
+        </div>
+        <div class="chatbox" id="chatbox"></div>
+        <form id="chat-msg" class="chat-bottom-bar">
+            <input type="text" name="message" id="message">
+            <input type="submit" name="send" id="send" value="send">
+        </form>
+    </div>
+    <!-- No tickets Msg -->
+    <div class="notickets" id="notickets" style="display: none;">
+        <h2>No tickets to show</h2>
+    </div>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/scripts/globals.js"></script>
+<script>
+    var socket = io("/chats")
+</script>
+<script src="/scripts/resolver/notificationservice.js"></script>
+<script src="/scripts/resolver/ajaxrequests.js"></script>
+<script src="/scripts/resolver/chatWindow.js"></script>
+<script src="/scripts/resolver/eventlisteners.js"></script>
+<script src="/scripts/resolver/usertickets.js"></script>
+<script src="/scripts/resolver/resolverticket.js"></script>
+</html>

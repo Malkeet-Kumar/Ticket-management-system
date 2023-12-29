@@ -1,0 +1,25 @@
+.notification-window{
+    background-color: white;
+    width: 400px;
+    height: 300px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 4px black;
+    display: flex;
+    flex-direction: column;
+}
+.notification-window{
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: none;
+}
+.notification-list{
+    list-style-type: none;
+}
+.notification-item{
+    color: white;
+    background-color: #aa4762;
+    padding: 4px 8px;
+    margin: 4px;
+    overflow: auto;
+}
